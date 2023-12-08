@@ -10,12 +10,12 @@ const userProfile = () => {
 
   useEffect(() => {
     const user = async () => {
-      const res = await fetch(`/api/userdata/${id}`).then(
+      const res = await fetch(`/api/userdata/${id}`, { cache: 'no-store' }).then(
         async (res) => await res.json()
       );
       data = res;
       setData(data);
-      const response = await fetch(`/api/users/${data?._id}/posts`);
+      const response = await fetch(`/api/users/${data?._id}/posts`, { cache: 'no-store' });
       const post = await response.json();
       console.log("post-->", post);
       posts = post;

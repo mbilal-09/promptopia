@@ -17,7 +17,7 @@ const EditPrompt = () => {
 
     useEffect(() => {
         const getPromptDetails = async () => {
-            const res = await fetch(`/api/prompt/${promptId}`);
+            const res = await fetch(`/api/prompt/${promptId}`, { cache: 'no-store' });
             const data = await res.json();
 
             setPost({
@@ -42,7 +42,7 @@ const EditPrompt = () => {
             prompt: post.prompt,
             tag: post.tag
           })
-        })
+        },{ cache: 'no-store' })
 
         if (response.ok) {
           router.push("/");
