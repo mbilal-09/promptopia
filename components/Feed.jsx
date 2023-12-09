@@ -33,7 +33,7 @@ const Feed = () => {
           return post;
         }
       });
-      setPost(filteredPosts)
+      setPost(filteredPosts);
     }
 
     if (searchText.length < 1) {
@@ -41,11 +41,11 @@ const Feed = () => {
     }
   }
 
-  useEffect(() => handleSearch(), [searchText])
+  useEffect(() => handleSearch(), [searchText]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch("/api/prompt", { cache: 'no-store' });
+      const response = await fetch("/api/prompt", { cache: "no-cache" });
       const data = await response.json();
 
       setMainPost(data);
@@ -68,10 +68,13 @@ const Feed = () => {
         />
       </form>
 
-      <PromptCardList data={posts} handleTagClick={(tag) => {
-        searchText = tag;
-        setSearchText(searchText);
-        }} />
+      <PromptCardList
+        data={posts}
+        handleTagClick={(tag) => {
+          searchText = tag;
+          setSearchText(searchText);
+        }}
+      />
     </section>
   );
 };

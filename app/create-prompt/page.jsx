@@ -28,7 +28,7 @@ const CreatePrompt = () => {
             userId: session?.user.id,
             tag: post.tag
           })
-        }, { cache: 'no-store' })
+        })
 
         if (response.ok) {
           router.push("/");
