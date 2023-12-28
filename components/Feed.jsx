@@ -5,7 +5,7 @@ import PromptCard from "./PromptCard";
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <div className="mt-16 prompt_layout">
-      {data.map((prompt) => (
+      {data?.map((prompt) => (
         <PromptCard
           key={prompt?._id}
           post={prompt}
@@ -18,7 +18,7 @@ const PromptCardList = ({ data, handleTagClick }) => {
 
 const Feed = () => {
   let [searchText, setSearchText] = useState("");
-  const [posts, setPost] = useState([]);
+  const [posts, setPost] = useState(null);
   const [mainPosts, setMainPost] = useState([]);
 
   function handleSearch() {
@@ -67,14 +67,21 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-
-      <PromptCardList
+      {posts ? (
+        <PromptCardList
         data={posts}
         handleTagClick={(tag) => {
           searchText = tag;
           setSearchText(searchText);
         }}
-      />
+        />
+        ) : (
+          <img
+            width={"500px"}
+            height={"500px"}
+            src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif"
+          />
+      )}
     </section>
   );
 };

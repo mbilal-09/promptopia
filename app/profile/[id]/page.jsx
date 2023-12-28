@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const userProfile = () => {
   let [data, setData] = useState(null);
-  let [posts, setPosts] = useState([]);
+  let [posts, setPosts] = useState(null);
   const id = usePathname().replace("/profile/", "");
 
   useEffect(() => {

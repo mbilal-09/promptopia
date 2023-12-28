@@ -9,7 +9,7 @@ const MyProfile = () => {
     const {data: session} = useSession();
     const router = useRouter();
 
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState(null);
 
     useEffect(() => {
         const fetchPosts = async () => {
