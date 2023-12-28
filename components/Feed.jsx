@@ -27,8 +27,8 @@ const Feed = () => {
         if (
           post.prompt.includes(searchText) ||
           post.tag.includes(searchText) ||
-          post.creator.username.includes(searchText) ||
-          post.creator.email.includes(searchText)
+          post.creator?.username.includes(searchText) ||
+          post.creator?.email.includes(searchText)
         ) {
           return post;
         }
