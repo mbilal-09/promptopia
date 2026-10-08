@@ -3,7 +3,7 @@ import Profile from "@components/Profile";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const userProfile = () => {
+const UserProfile = () => {
   let [data, setData] = useState(null);
   let [posts, setPosts] = useState(null);
   const id = usePathname().replace("/profile/", "");
@@ -35,4 +35,4 @@ const userProfile = () => {
   );
 };
 
-export default userProfile;
+export default UserProfile;
