@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
+import { filterPosts } from "@utils/filterPosts.mjs";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
@@ -22,22 +23,13 @@ const Feed = () => {
   const [mainPosts, setMainPost] = useState([]);
 
   function handleSearch() {
-    if (posts) {
-      const filteredPosts = mainPosts.filter((post) => {
-        if (
-          post.prompt.includes(searchText) ||
-          post.tag.includes(searchText) ||
-          post.creator?.username.includes(searchText) ||
-          post.creator?.email.includes(searchText)
-        ) {
-          return post;
-        }
-      });
-      setPost(filteredPosts);
+    if (!searchText) {
+      setPost(mainPosts);
+      return;
     }
 
-    if (searchText.length < 1) {
-      setPost(mainPosts);
+    if (posts) {
+      setPost(filterPosts(mainPosts, searchText));
     }
   }
 
